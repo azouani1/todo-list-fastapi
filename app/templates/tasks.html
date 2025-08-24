@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ma liste de tâches</title>
+</head>
+<body>
+    <h1>Ma liste de tâches</h1>
+
+    <p>
+        <a href="/logout">Se déconnecter</a>
+    </p>
+    <!-- Formulaire d'ajout -->
+    <form action="/tasks" method="post">
+        <input type="text" name="title" placeholder="Nouvelle tâche" required>
+        <button type="submit">Ajouter</button>
+    </form>
+
+    <!-- Formulaire de recherche -->
+    <form method="get" action="/tasks">
+        <input type="text" name="q" value="{{ query or '' }}" placeholder="Rechercher une tâche">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <!-- Liste des tâches -->
+    <ul>
+        {% for task in tasks %}
+            <li>
+                {{ task.title }}
+                {% if task.completed %}
+                    
+                {% else %}
+                    
+                {% endif %}
+                <form method="post" action="/tasks/delete" style="display:inline;">
+                    <input type="hidden" name="task_id" value="{{ task.id }}">
+                    <button type="submit" onclick="return confirm('Supprimer cette tâche ?')">Supprimer</button>
+                </form>
+            </li>
+            
+        {% else %}
+            <li>Aucune tâche trouvée.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
