@@ -12,10 +12,3 @@ Ce projet permet à un utilisateur de :
 
 ---
 
-##  Installation & Lancement
-
-### 1. Cloner le projet
-```bash
-git clone https://github.com/azouani1/todo-list-fastapi.git
-cd todo-list-fastapi
-
