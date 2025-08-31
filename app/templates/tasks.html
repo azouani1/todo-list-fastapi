@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Ma liste de tâches</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
     <h1>Ma liste de tâches</h1>
@@ -22,24 +23,22 @@
     </form>
 
     <!-- Liste des tâches -->
+<div class="task-container">
     <ul>
         {% for task in tasks %}
             <li>
-                {{ task.title }}
-                {% if task.completed %}
-                    
-                {% else %}
-                    
-                {% endif %}
-                <form method="post" action="/tasks/delete" style="display:inline;">
-                    <input type="hidden" name="task_id" value="{{ task.id }}">
-                    <button type="submit" onclick="return confirm('Supprimer cette tâche ?')">Supprimer</button>
-                </form>
+                <span>{{ task.title }}</span>
+                <div>
+                    <form method="post" action="/tasks/delete" style="display:inline;">
+                        <input type="hidden" name="task_id" value="{{ task.id }}">
+                        <button type="submit" onclick="return confirm('Supprimer cette tâche ?')">Supprimer</button>
+                    </form>
+                </div>
             </li>
-            
         {% else %}
             <li>Aucune tâche trouvée.</li>
         {% endfor %}
     </ul>
+</div>
 </body>
 </html>
