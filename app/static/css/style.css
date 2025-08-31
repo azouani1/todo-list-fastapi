@@ -52,3 +52,11 @@ li {
     justify-content: space-between;
     align-items: center;
 }
+.task-item {
+    cursor: pointer;
+}
+
+.task-item.completed {
+    text-decoration: line-through;
+    color: gray;
+}

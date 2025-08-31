@@ -26,19 +26,18 @@
 <div class="task-container">
     <ul>
         {% for task in tasks %}
-            <li>
-                <span>{{ task.title }}</span>
-                <div>
-                    <form method="post" action="/tasks/delete" style="display:inline;">
-                        <input type="hidden" name="task_id" value="{{ task.id }}">
-                        <button type="submit" onclick="return confirm('Supprimer cette tâche ?')">Supprimer</button>
-                    </form>
-                </div>
+            <li class="task-item {% if task.completed %}completed{% endif %}">
+                {{ task.title }}
+                <form method="post" action="/tasks/delete" style="display:inline;">
+                    <input type="hidden" name="task_id" value="{{ task.id }}">
+                    <button type="submit" onclick="return confirm('Supprimer cette tâche ?')">Supprimer</button>
+                </form>
             </li>
         {% else %}
             <li>Aucune tâche trouvée.</li>
         {% endfor %}
     </ul>
 </div>
+<script src="/static/js/script.js"></script>
 </body>
 </html>

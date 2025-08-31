@@ -59,4 +59,7 @@ async def delete_task(
         "tasks.html",
         {"request": request, "message": "Tâche supprimée", "tasks": tasks}
     )
-
+@router.get("/dashboard", response_class=HTMLResponse)
+async def dashboard(request: Request, db: Session = Depends(get_session)):
+    tasks = db.exec(select(Task)).all()
+    return templates.TemplateResponse("dashboard.html", {"request": request, "tasks": tasks})

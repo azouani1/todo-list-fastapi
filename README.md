@@ -10,5 +10,3 @@ Ce projet permet à un utilisateur de :
 -  Supprimer une tâche  
 -  Gérer l'inscription et la connexion (authentification simple)
 
----
-
